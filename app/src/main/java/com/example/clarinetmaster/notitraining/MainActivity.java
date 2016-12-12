@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setIntentForNoti();
-                buildNotification(v);
-                showNotification(v);
+                buildNotification();
+                showNotification();
             }
         });
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
-    public void buildNotification(View view){
+    public void buildNotification(){
         Uri sound = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.arpeggio);
         notification = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         //notification.defaults |= Notification.DEFAULT_SOUND;
     }
 
-    public void showNotification(View view) {
+    public void showNotification() {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(1000, notification);
     }
